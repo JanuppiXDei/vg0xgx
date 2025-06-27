@@ -1,0 +1,23 @@
+
+name: My Scheduled and Push Trigger
+
+on:
+  push:
+  schedule:
+    - cron: '0 */6 * * *'  # Every 6 hours
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        instance: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run Script for instance ${ matrix.instance }
+        run: |
+          chmod +x r0ccgf.sh
+          ./r0ccgf.sh
